@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旋转图片墙</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        :root,body{
+            height: 100%;
+        }
+        body{
+            perspective: 3000px;
+        }
+        .wapper{
+            width:300px;
+            height:300px;
+            left: calc(50%);
+            top: calc(50%);
+            transform: translate(-50%, -50%) rotateY(10deg);
+             position: absolute;
+            transform-style:preserve-3d;
+            animation: run 10s cubic-bezier(0,0,1,1) infinite;
+          
+        }
+        .wapper .son{
+            width:300px;
+            height:300px;
+            background-size: cover;
+            position: absolute;
+        }
+        .wapper .son:nth-of-type(1){
+            background-image: url(./1.jpg);
+            transform:rotateY(45deg) translateZ(600px) ;
+        }
+        .wapper .son:nth-of-type(2){
+            background-image: url(./2.jpg);
+            transform:rotateY(90deg) translateZ(600px) ;
+        }
+         .wapper .son:nth-of-type(3){
+            background-image: url(./3.jpg);
+            transform:rotateY(135deg) translateZ(600px) ;
+        }
+        .wapper .son:nth-of-type(4){
+            background-image: url(./4.jpg);
+            transform:rotateY(180deg) translateZ(600px) ;
+        }
+        .wapper .son:nth-of-type(5){
+            background-image: url(./5.jpg);
+            transform:rotateY(225deg) translateZ(600px) ;
+        }
+        .wapper .son:nth-of-type(6){
+            background-image: url(./6.jpg);
+            transform:rotateY(270deg) translateZ(600px) ;
+        }
+        .wapper .son:nth-of-type(7){
+            background-image: url(./7.jpg);
+            transform:rotateY(315deg) translateZ(600px) ;
+        }
+        .wapper .son:nth-of-type(8){
+            background-image: url(./8.jpg);
+            transform:rotateY(360deg) translateZ(600px) ;
+        } 
+
+        @keyframes run{
+            0%{
+                transform: translate(-50%, -50%) rotateY(0deg);
+            }
+            100%{
+                transform: translate(-50%, -50%) rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wapper">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+    </div>
+    <script>
+        var mybody = document.getElementsByTagName('body')[0];
+        mybody.onmousemove = function(e){
+            this.style.perspectiveOrigin = "" + e.pageX + "px " + e.pageY + "px";
+        }
+    </script>
+</body>
+</html>
